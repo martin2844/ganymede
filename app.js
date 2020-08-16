@@ -16,8 +16,9 @@ app.use(forceSsl);
 app.use(cors());
 
 //Body Parser
-app.use(express.json({ extended: false }));
-app.use(express.urlencoded({extended: false}));
+app.use(express.json({ extended: false, limit: '50mb'}));
+app.use(express.urlencoded({extended: false, limit: '50mb' }));
+
 
 //Search route
 app.use('/api/products', require('./routes/products'));

@@ -10,12 +10,7 @@ const OrderSchema = new mongoose.Schema({
         required: true
     },
     options: {
-        key: {
-            type: String,
-        },
-        secret: {
-            type: String
-        }
+        type: Object,
     },
     callbackUrl: {
         type: String,
@@ -27,6 +22,9 @@ const OrderSchema = new mongoose.Schema({
     },
     results: {
         type: Array
+    },
+    error: {
+        type: String,
     }
 })
 
