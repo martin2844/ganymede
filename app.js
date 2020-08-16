@@ -5,15 +5,23 @@ const connectDB = require('./config/db')
 const cors = require('cors');
 const path = require('path');
 const forceSsl = require('force-ssl-heroku');
-
+const morgan = require('morgan');
+const fs = require('fs');
 //First connect to mongoose. 
 connectDB();
+
 
 
 //initialize express.
 const app = express();
 app.use(forceSsl);
 app.use(cors());
+
+//Logger
+// create a write stream (in append mode)
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+// setup the logger
+app.use(morgan('combined', { stream: accessLogStream }))
 
 //Body Parser
 app.use(express.json({ extended: false, limit: '50mb'}));

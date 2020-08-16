@@ -7,12 +7,30 @@ const Order = require('../models/Order');
 
 
 router.post('/', async (req, res) => {
-    const order = req.body;
-    let willUpdate = await Order.findById(order._id);
-    willUpdate.results = order.results;
-    willUpdate.status = "done";
-    await willUpdate.save()
-    res.send("order updated, and done");
+
+    try {
+        const order = req.body;
+        let willUpdate = await Order.findById(order._id);
+        console.log(willUpdate);
+        willUpdate.results = order.results;
+    
+        if(order.results.error) {
+            console.log("there was an error")
+            willUpdate.status = "failed";
+            willUpdate.error = order.results.error;
+        } else {
+            console.log("No errors, search done")
+            willUpdate.status = "done";
+        }
+ 
+        let update = await willUpdate.save();
+        res.send("order updated, and done");
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(error);
+    }
+ 
 })
 
 

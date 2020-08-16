@@ -1,16 +1,34 @@
 const express = require("express");
 const axios = require("axios");
+const { check, validationResult } = require('express-validator');
 const router = express.Router();
 //Schema
 const Order = require('../models/Order');
+
+//Callbacks
+const callbacks = require("../config/callbacks");
 
 /*
 @POST search PRODUCTS
 Send the parameters needed - Search will be initiated by themisto, ganymede will store into MongoDB
 */
 
-router.post("/search", async (req, res) => {
+router.post("/search",[ 
+    check("search.provider", "Please pass in a provider").not().isEmpty(),
+    check("search.query", "Please provide a query").not().isEmpty(),
+    check("search.callbackUrl", "Please pass in a callback url").not().isEmpty(),
+    check("search.callbackUrl", "Invalid callback URL").isIn(callbacks)
+],
+async (req, res) => {
     //First try catch block, this will create the Mongo Doc, with initial params for the query, sent via req.body.
+
+    //errors array
+     const errors = validationResult(req);
+    //If errors, send errors.
+     if(!errors.isEmpty()) {
+        return res.status(400).json({errors: errors.array()});
+    }
+
 
     try {
         //Destructure body
@@ -27,10 +45,10 @@ router.post("/search", async (req, res) => {
         console.log(id);
 
             try {
-                //Try to post a search to ganymede. If search is posted, then status is processing.
-                let search = await axios.post("http://localhost:6000/search", order);
                 order.status = "processing";
                 await order.save();
+                //Try to post a search to ganymede. If search is posted, then status is processing.
+                let search = await axios.post("http://localhost:6000/api/search", order);
                 res.send("search started");
             } catch (error) {
                 //If there was an error with the search posting, then status will be failed, and we'll have an error via this catch.
