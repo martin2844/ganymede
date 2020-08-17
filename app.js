@@ -30,6 +30,10 @@ app.use(express.urlencoded({extended: false, limit: '50mb' }));
 app.use('/api/products', require('./routes/products'));
 //Call back URL route.
 app.use('/api/results', require('./routes/results'));
-const PORT = process.env.PORT || 5000;
 
+app.get("/", (req, res) => {
+    res.send("ganymede");
+})
+
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`server started on ${PORT}`));
