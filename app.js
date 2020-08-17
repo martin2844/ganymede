@@ -4,7 +4,6 @@ require('dotenv').config();
 const connectDB = require('./config/db')
 const cors = require('cors');
 const path = require('path');
-const forceSsl = require('force-ssl-heroku');
 const morgan = require('morgan');
 const fs = require('fs');
 //First connect to mongoose. 
@@ -14,7 +13,6 @@ connectDB();
 
 //initialize express.
 const app = express();
-app.use(forceSsl);
 app.use(cors());
 
 //Logger
