@@ -56,7 +56,7 @@ async (req, res) => {
                 order.error = error;
                 //Save the new status to mongo DB. Send Error.
                 await order.save();
-                res.status(500).send("Themisto error \n", error);
+                res.status(500).send(("Themisto error \n", error));
             }
         
 
@@ -66,6 +66,60 @@ async (req, res) => {
 
     }
 })
+
+
+
+router.get("/search-order/:id", async (req, res) => {
+    let { id } = req.params;
+    console.log(id)
+    try {
+        const order = await Order.findById(id);
+        if(!order) {
+            return res.status(404).json({msg: 'order not found'});
+        }
+        res.json(order);
+        
+    } catch (err) {
+        console.error(err.message);
+        // the following if statement is for a request made where the ObjectID is not a valid objectID format
+        if(err.kind === 'ObjectId') {
+            return res.status(404).json({msg: 'object not found'});
+        }
+        res.status(500).send("server error");
+    }
+})
+
+router.get('/search-orders/', async (req,res) => {
+    try {
+        const orders = await Order.find().sort({date: -1});
+        res.json(orders);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("server error");
+    }
+    
+});
+
+
+router.get('/search-orders/category/:id', async (req,res) => {
+    try {
+        const orders = await Order.find({
+            'categories': {
+                $in: [
+                    req.params.id
+                ]
+            }
+        }).sort({date: -1});
+        res.json(orders);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("server error");
+    }
+    
+});
+
+
+
 
 
 module.exports = router;

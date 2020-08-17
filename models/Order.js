@@ -5,6 +5,9 @@ const OrderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    categories: {
+        type: Array
+    },
     provider: {
         type: String,
         required: true

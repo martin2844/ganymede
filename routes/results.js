@@ -13,13 +13,14 @@ router.post('/', async (req, res) => {
         let willUpdate = await Order.findById(order._id);
         console.log(willUpdate);
         willUpdate.results = order.results;
+        willUpdate.categories = order.categories;
     
         if(order.results.error) {
-            console.log("there was an error")
+            console.log("there was an error");
             willUpdate.status = "failed";
             willUpdate.error = order.results.error;
         } else {
-            console.log("No errors, search done")
+            console.log("No errors, search done \n @@@@@ SEARCH ENDED @@@@ \n");
             willUpdate.status = "done";
         }
  
