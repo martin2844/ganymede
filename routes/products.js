@@ -11,7 +11,7 @@ const callbacks = require("../config/callbacks");
 //ROUTE
 let THEMISTO;
 
-process.env.NODE_ENV ? THEMISTO = "https://themisto66.herokuapp.com/" : THEMISTO = "http://localhost:6000";
+process.env.NODE_ENV === "PROD" ? THEMISTO = "https://themisto66.herokuapp.com/" : THEMISTO = "http://localhost:6000";
 
 
 /*
