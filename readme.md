@@ -44,7 +44,7 @@ If using a non-ephimeral server, all requests would be saved to access.log thank
 **Endpoint**: /api/products/search-order/:id  
 **Descritpion**: Searches for a previous existing order by ID.  
   
-example: http://localhost:5000/api/products/search-order/5f3adcd86cd71f6acc36f4b1  
+example: https://ganymede66.herokuapp.com/api/products/search-order/5f3adcd86cd71f6acc36f4b1  
   
 ### Get all previous searches  
   
@@ -52,7 +52,7 @@ example: http://localhost:5000/api/products/search-order/5f3adcd86cd71f6acc36f4b
 **Endpoint**: /api/products/search-orders/  
 **Descritpion**: Retrieves all the DB.  
   
-example: http://localhost:5000/api/products/search-orders/  
+example: https://ganymede66.herokuapp.com/api/products/search-orders/  
   
 ### Get all previous searches with specific category  
   
@@ -60,7 +60,7 @@ example: http://localhost:5000/api/products/search-orders/
 **Endpoint**: /api/products/search-orders/category/:cat  
 **Descritpion**: Retrieves all products within cat.  
 
-example: http://localhost:5000/api/products/search-orders/category/herramientas-electricas
+example: https://ganymede66.herokuapp.com/api/products/search-orders/category/herramientas-electricas
 
 
 #### How to use: 

@@ -8,10 +8,18 @@ const Order = require('../models/Order');
 //Callbacks
 const callbacks = require("../config/callbacks");
 
+//ROUTE
+let THEMISTO;
+
+process.env.NODE_ENV ? THEMISTO = "https://themisto66.herokuapp.com/" : THEMISTO = "http://localhost:6000";
+
+
 /*
 @POST search PRODUCTS
 Send the parameters needed - Search will be initiated by themisto, ganymede will store into MongoDB
 */
+
+
 
 router.post("/search",[ 
     check("search.provider", "Please pass in a provider").not().isEmpty(),
@@ -48,7 +56,7 @@ async (req, res) => {
                 order.status = "processing";
                 await order.save();
                 //Try to post a search to ganymede. If search is posted, then status is processing.
-                let search = await axios.post("http://localhost:6000/api/search", order);
+                let search = await axios.post( THEMISTO + "/api/search", order);
                 res.send("search started");
             } catch (error) {
                 //If there was an error with the search posting, then status will be failed, and we'll have an error via this catch.

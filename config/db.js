@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const connectDB = () => {
-    const mongoURI = "mongodb+srv://martin:algo1234@cluster0.pot2j.gcp.mongodb.net/ganymede?retryWrites=true&w=majority";
+    const mongoURI = process.env.MONGO;
     mongoose.connect(mongoURI,{useUnifiedTopology: true, useNewUrlParser: true });
     console.log(mongoose.connection.readyState);
     return(mongoose.connection.readyState);
