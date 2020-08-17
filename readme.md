@@ -92,6 +92,12 @@ The format of your JSON should be like this
 
 ```  
 
+## Run locally
+
+`npm i && node app.js`
+
+
+
 ## Version History:
 0.1 - Initial scaffolding: Express Server, Mongoose connection to Atlas DB, router scaffolding.  
 0.2 - Search route cleanup with status for orders.  
