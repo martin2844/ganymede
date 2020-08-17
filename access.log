@@ -137,3 +137,6 @@
 ::1 - - [17/Aug/2020:22:02:02 +0000] "POST /api/products/search HTTP/1.1" 200 14 "-" "PostmanRuntime/7.26.3"
 ::1 - - [17/Aug/2020:22:03:36 +0000] "POST /api/products/search HTTP/1.1" 400 144 "-" "PostmanRuntime/7.26.3"
 ::1 - - [17/Aug/2020:22:04:19 +0000] "POST /api/products/search HTTP/1.1" 200 14 "-" "PostmanRuntime/7.26.3"
+::1 - - [17/Aug/2020:22:40:22 +0000] "POST /api/products/search HTTP/1.1" - - "-" "PostmanRuntime/7.26.3"
+::ffff:127.0.0.1 - - [17/Aug/2020:22:40:34 +0000] "POST /api/results HTTP/1.1" 200 23 "-" "axios/0.19.2"
+::1 - - [17/Aug/2020:22:40:34 +0000] "POST /api/products/search HTTP/1.1" 200 14 "-" "PostmanRuntime/7.26.3"

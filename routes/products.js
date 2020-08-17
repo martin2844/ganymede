@@ -9,9 +9,7 @@ const Order = require('../models/Order');
 const callbacks = require("../config/callbacks");
 
 //ROUTE
-let THEMISTO;
-
-process.env.NODE_ENV === "PROD" ? THEMISTO = "https://themisto66.herokuapp.com/" : THEMISTO = "http://localhost:6000";
+let THEMISTO = process.env.THEMISTO
 
 
 /*
