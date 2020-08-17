@@ -126,3 +126,7 @@
 ::1 - - [17/Aug/2020:20:39:26 +0000] "GET /api/products/search-orders/category/herramientas HTTP/1.1" 200 100389 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36"
 ::1 - - [17/Aug/2020:20:39:35 +0000] "GET /api/products/search-orders/category/herramientas-electricas HTTP/1.1" 200 115239 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36"
 ::1 - - [17/Aug/2020:20:40:29 +0000] "GET /api/products/search-order/5f3adcd86cd71f6acc36f4b1 HTTP/1.1" 200 5831 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36"
+::ffff:127.0.0.1 - - [17/Aug/2020:20:55:54 +0000] "POST /api/results HTTP/1.1" 200 23 "-" "axios/0.19.2"
+::1 - - [17/Aug/2020:20:55:54 +0000] "POST /api/products/search HTTP/1.1" 200 14 "-" "PostmanRuntime/7.26.3"
+::ffff:127.0.0.1 - - [17/Aug/2020:20:58:00 +0000] "POST /api/results HTTP/1.1" 200 23 "-" "axios/0.19.2"
+::1 - - [17/Aug/2020:20:58:00 +0000] "POST /api/products/search HTTP/1.1" 200 14 "-" "PostmanRuntime/7.26.3"
